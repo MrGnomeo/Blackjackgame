@@ -1,0 +1,31 @@
+'''
+Created on May 17, 2018
+
+@author: MrGnomeo
+'''
+import random
+
+textArea = document.getElementById('text-area');
+newGameButton = document.getElementById('new-game-button');
+hitButton = document.getElementById('hit-button');
+stayButton = document.getElementById('stay-button');
+
+hitButton.styles.display = 'none'
+stayButton.styles.display = 'none'
+def newgame():
+    textArea.innerText = 'Started...'
+    newGameButton.styles.display = 'none'
+    hitButton.styles.display = 'inline'
+    stayButton.styles.display = 'inline'
+newGameButton.addEventListener('click', newgame())
+
+suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
+values = ('Ace', 'King', 'Queen', 'Jack', '10', '9', '8', '7', '6', '5', '4', '3', '2')
+
+cards = random.sample([(f'{_} of {i}') for i in suits for _ in values], k=52)
+
+dealer_c = cards[0], cards[1]
+hand = cards[2], cards[3]
+print('Welcome to Blackjack')
+print(f'The dealer is dealt {dealer_c[0]} and {dealer_c[1]}')
+print(f'You are dealt {hand[0]} and {hand[1]}')
